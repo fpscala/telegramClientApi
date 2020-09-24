@@ -1,3 +1,4 @@
 config_local.py
 # Project exclude paths
 /venv/
+Maftunbek.session
