@@ -3,9 +3,21 @@ from datetime import datetime
 import cv2
 import numpy as np
 
+array = []
+
+
+def getStringFromArray(index):
+    return array[index]
+
+
+def countdown(now):
+    date_time_str = '2021-01-01 00:00:00'
+    date_time_obj = datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S')
+    return date_time_obj - now
+
 
 def convert_time_to_string(dt):
-    return f"{dt.hour}:{dt.minute:02}"
+    return f"{dt.hour}:{dt.minute:02}:{dt.second:02}"
 
 
 def time_has_changed(prev_time):

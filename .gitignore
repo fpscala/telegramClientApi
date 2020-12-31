@@ -4,3 +4,5 @@ config/config_local.py
 Maftunbek.session
 carpediem.session
 anon.session
+dialogs
+media
