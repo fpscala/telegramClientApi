@@ -7,7 +7,7 @@ from telethon import TelegramClient
 from telethon.tl.functions.account import UpdateProfileRequest
 
 from config.config_local import Config
-from utils.util import getStringFromArray, array, countdown, convert_time_to_string
+from utils.util import getStringFromArray, array, countdown
 
 
 def valid_tz(s):
@@ -25,24 +25,23 @@ parser.add_argument("--tz", required=False, help="user api Hash", type=valid_tz,
 
 args = parser.parse_args()
 
-client = TelegramClient("carpediem", args.api_id, args.api_hash)
+client = TelegramClient(Config.SESSION_NAME, args.api_id, args.api_hash)
 client.flood_sleep_threshold = 0  # Don't auto-sleep
+
 
 async def setBio():
     index = 0
     while True:
         size = len(array)
-        print(index)
         bts = str(countdown(datetime.now(args.tz).replace(microsecond=0, tzinfo=None)))
         if index == size:
             bio = 'Yangi yil ' + bts + ' dan keyin kirib keladi!'
             index = 0
         else:
             bio = str(getStringFromArray(index))
-        print(bio)
         index += 1
-        await client(UpdateProfileRequest(about='Yangi yil ' + bts + ' dan keyin kirib keladi!'))
-        time.sleep(1)
+        await client(UpdateProfileRequest(about=bio))
+        time.sleep(60)
 
 
 if __name__ == '__main__':

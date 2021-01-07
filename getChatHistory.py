@@ -3,7 +3,7 @@ from telethon import TelegramClient
 from config.config_local import Config
 
 # Remember to use your own values from my.telegram.org!
-client = TelegramClient("carpediem", Config.API_ID, Config.API_HASH)
+client = TelegramClient(Config.SESSION_NAME, Config.API_ID, Config.API_HASH)
 
 
 async def main():
